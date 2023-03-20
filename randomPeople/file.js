@@ -25,6 +25,38 @@ function printCards(arr) {
       const modal = document.createElement("div");
       modal.classList.add("modalWrap");
       body.prepend(modal);
+      modal.innerHTML = `  
+      <section class = "modalSection"> 
+      <span>&#x2715</span>
+      <div class="left">
+      <img src="${element.picture.large}" alt="">
+      <p class="modal-text">${element.name.first} ${element.name.last}</p>
+    </div>
+    <div class="right">
+      <ul>
+        <li>City: ${element.location.city}</li>
+        <li>Country: ${element.location.country}</li>
+        <li>Postcode: ${element.location.postcode}</li>
+        <li>Phone Number: ${element.phone}</li>
+        <li>Age: ${element.dob.age}</li>
+      </ul>
+      <button>Beer &#127866;</button>
+    </div>
+    <section>`;
+      const goBack = document.querySelector(".modalSection span");
+      // modal.addEventListener("click", (e) => {
+      //   e.stopImmediatePropagation();
+      //   body.removeChild(modal);
+      // });
+
+      goBack.addEventListener("click", () => {
+        body.removeChild(modal);
+      });
+      document.addEventListener("keyup", (e) => {
+        if (e.key === "Escape") {
+          body.removeChild(modal);
+        }
+      });
     });
   });
 }
